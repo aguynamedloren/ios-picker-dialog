@@ -35,10 +35,13 @@ func buttonTapped() {
 * selected: String (Default picker value)
 * callback: ((value: String) -> Void) (Required)
 
+## Forked from
+* [@aguynamedloren](https://github.com/aguynamedloren) 
 
 ## Special thanks to
 
 * [@Squimer](https://github.com/squimer) for the [DatePickerDialog-iOS-Swift](https://github.com/squimer/DatePickerDialog-iOS-Swift) project.
+
 * [@wimagguc](https://github.com/wimagguc) for the work with [ios-custom-alertview](https://github.com/wimagguc/ios-custom-alertview) library.
 
 ## License
