@@ -15,8 +15,7 @@ class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
   }
-  
-  
+
   typealias PickerCallback = (_ value: String) -> Void
   
   /* Constants */
@@ -36,12 +35,10 @@ class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
   private var pickerData =         [[String: String]]()
   private var selectedPickerValue: String?
   private var callback:            PickerCallback?
-  
-  
+ 
   /* Overrides */
   init() {
     super.init(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height))
-    
     setupView()
   }
   
@@ -93,7 +90,6 @@ class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         return index
       }
     }
-    
     return nil
   }
   
