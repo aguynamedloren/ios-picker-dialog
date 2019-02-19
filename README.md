@@ -20,9 +20,9 @@ func buttonTapped() {
     ]
 
     PickerDialog().show("Distance units", options: pickerData, selected: "kilometer") {
-        (value) -> Void in
+        (value,display) -> Void in
 
-        print("Unit selected: \(value)")
+        print("Unit selected: \(value). display: \(display)")
     }
 }
 ```
@@ -33,7 +33,7 @@ func buttonTapped() {
 * doneButtonTitle: String
 * cancelButtonTitle: String
 * selected: String (Default picker value)
-* callback: ((value: String) -> Void) (Required)
+* callback: ((value: String, display: String) -> Void) (Required)
 
 ## Forked from
 * [@aguynamedloren](https://github.com/aguynamedloren) 
