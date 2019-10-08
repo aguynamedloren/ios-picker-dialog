@@ -133,25 +133,6 @@ class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
                 self.dialogView!.layer.transform = CATransform3DMakeScale(1, 1, 1)
         }
         )
-        /* */
-        /* */
-//        UIApplication.shared.windows.first!.addSubview(self)
-//        UIApplication.shared.windows.first!.endEditing(true)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(PickerDialog.deviceOrientationDidChange(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
-//
-//        /* Anim */
-//        UIView.animate(
-//            withDuration: 0.2,
-//            delay: 0,
-//            options: UIView.AnimationOptions.curveEaseInOut,
-//            animations: { () -> Void in
-//                self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
-//                self.dialogView!.layer.opacity = 1
-//                self.dialogView!.layer.transform = CATransform3DMakeScale(1, 1, 1)
-//        },
-//            completion: nil
-//        )
     }
     
     /* Dialog close animation then cleaning and removing the view from the parent */
