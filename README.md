@@ -1,5 +1,5 @@
 # PickerDialog
-
+I add update for display callback
 PickerDialog is a customizable class that displays a UIPickerView in a dialog
 for iOS apps.  This project builds on [DatePickerDialog-iOS-Swift](https://github.com/squimer/DatePickerDialog-iOS-Swift),
 a date picker dialog developed by [Squimer](https://github.com/squimer).
