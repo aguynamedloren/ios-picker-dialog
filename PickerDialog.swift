@@ -68,7 +68,7 @@ class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     /* Handle device orientation changes */
-    func deviceOrientationDidChange(notification: NSNotification) {
+    @objc func deviceOrientationDidChange(_ notification: NSNotification) {
         close() // For now just close it
     }
     
@@ -110,24 +110,48 @@ class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
             self.picker.selectRow(selectedIndex, inComponent: 0, animated: false)
         }
         
-        /* */
-        UIApplication.shared.windows.first!.addSubview(self)
-        UIApplication.shared.windows.first!.endEditing(true)
         
-        NotificationCenter.default.addObserver(self, selector: Selector(("deviceOrientationDidChange:")), name: UIDevice.orientationDidChangeNotification, object: nil)
-        
+        /* Add dialog to main window */
+        guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
+        guard let window = appDelegate.window else { fatalError() }
+        window?.addSubview(self)
+        window?.bringSubviewToFront(self)
+        window?.endEditing(true)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(PickerDialog.deviceOrientationDidChange(_:)),
+                                               name: UIDevice.orientationDidChangeNotification, object: nil)
+
         /* Anim */
         UIView.animate(
             withDuration: 0.2,
             delay: 0,
-            options: UIView.AnimationOptions.curveEaseInOut,
-            animations: { () -> Void in
+            options: .curveEaseInOut,
+            animations: {
                 self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
                 self.dialogView!.layer.opacity = 1
                 self.dialogView!.layer.transform = CATransform3DMakeScale(1, 1, 1)
-        },
-            completion: nil
+        }
         )
+        /* */
+        /* */
+//        UIApplication.shared.windows.first!.addSubview(self)
+//        UIApplication.shared.windows.first!.endEditing(true)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(PickerDialog.deviceOrientationDidChange(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
+//
+//        /* Anim */
+//        UIView.animate(
+//            withDuration: 0.2,
+//            delay: 0,
+//            options: UIView.AnimationOptions.curveEaseInOut,
+//            animations: { () -> Void in
+//                self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+//                self.dialogView!.layer.opacity = 1
+//                self.dialogView!.layer.transform = CATransform3DMakeScale(1, 1, 1)
+//        },
+//            completion: nil
+//        )
     }
     
     /* Dialog close animation then cleaning and removing the view from the parent */
