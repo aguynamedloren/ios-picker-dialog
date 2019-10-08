@@ -6,6 +6,9 @@ a date picker dialog developed by [Squimer](https://github.com/squimer).
 
 ![Demo screen](example.png)
 
+## Swift Version
+This project is using swift version 5
+
 ## Adding to your project
 
 Copy the `PickerDialog.swift` file into your project.  Modify to fit your needs.
@@ -20,9 +23,9 @@ func buttonTapped() {
     ]
 
     PickerDialog().show("Distance units", options: pickerData, selected: "kilometer") {
-        (value,display) -> Void in
+        (value, display) -> Void in
 
-        print("Unit selected: \(value). display: \(display)")
+        print("Unit selected: \(value), display: \(display)")
     }
 }
 ```
