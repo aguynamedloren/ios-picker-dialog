@@ -1,6 +1,6 @@
 //
 //  PickerDialog.swift
-//  HomeApp
+//  PickerDialog
 //
 //  Created by Rerlanggas on 19/02/19.
 //  Copyright © 2019 Rerlanggas. All rights reserved.
