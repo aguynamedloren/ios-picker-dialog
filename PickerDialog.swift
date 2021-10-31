@@ -19,7 +19,7 @@ class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     typealias PickerCallback = (_ value: String,_ display: String) -> Void
     
     /* Constants */
-    private let kPickerDialogDefaultButtonHeight:       CGFloat = 50
+    private let kPickerDialogDefaultButtonHeight:       CGFloat = 48
     private let kPickerDialogDefaultButtonSpacerHeight: CGFloat = 1
     private let kPickerDialogCornerRadius:              CGFloat = 7
     private let kPickerDialogDoneButtonTag:             Int     = 1
