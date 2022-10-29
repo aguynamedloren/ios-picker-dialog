@@ -21,7 +21,7 @@ func buttonTapped() {
         ["value": "mile", "display": "Miles (mi)"],
         ["value": "kilometer", "display": "Kilometers (km)"]
     ]
-    PickerDialog().show("Distance units", options: pickerData, selected: "kilometer") {
+    PickerDialog().show(title: "Distance units", options: pickerData, selected: "kilometer") {
         (value, display) -> Void in
 
         print("Unit selected: \(value), display: \(display)")
