@@ -97,7 +97,7 @@ class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     /* Create the dialog view, and animate opening the dialog */
-    func show(title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", options: [[String: String]], selected: String? = nil, callback: @escaping PickerCallback) {
+    func show(title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", options: [[String: String]], selected: String? = nil, viewController: UIViewController? = nil, callback: @escaping PickerCallback) {
         self.titleLabel.text = title
         self.pickerData = options
         self.doneButton.setTitle(doneButtonTitle, for: .normal)
@@ -110,14 +110,19 @@ class PickerDialog: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
             self.picker.selectRow(selectedIndex, inComponent: 0, animated: false)
         }
         
+        if let rootViewController = viewController {
+            rootViewController.view.addSubview(self)
+            rootViewController.view.bringSubviewToFront(self)
+            rootViewController.view.endEditing(true)
+        } else {
+            /* Add dialog to main window */
+            guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
+            guard let window = appDelegate.window else { fatalError() }
+            window?.addSubview(self)
+            window?.bringSubviewToFront(self)
+            window?.endEditing(true)
+        }
         
-        /* Add dialog to main window */
-        guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
-        guard let window = appDelegate.window else { fatalError() }
-        window?.addSubview(self)
-        window?.bringSubviewToFront(self)
-        window?.endEditing(true)
-
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(PickerDialog.deviceOrientationDidChange(_:)),
                                                name: UIDevice.orientationDidChangeNotification, object: nil)
@@ -290,4 +295,5 @@ extension UIColor {
         )
     }
 }
+
 
